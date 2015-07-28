@@ -35,21 +35,4 @@ def encodetohtml(jsondata):
 
     finaloutput = template.safe_substitute(date = templatedate,dealbackgroundcolor = templatebackgroundcolor,dealtitle = templatetitle, dealfeatures = templatefeatures, dealphoto = templatephoto, dealstorytitle = templatetitle, dealstorybody = templatebody, dealspecifications = templatespecifications, dealprice = templateprice, dealurl = templateurl)
 
-    #print templatedate,templatetitle,templatefeatures,templatephoto,templatestory,templatebody,templateprice,templateurl
-
-    #print finaloutput
-
     return finaloutput
-
-
-
-jsondata = open("./json-response-example.json")
-jsondata = jsondata.read()
-#data = json.loads(jsondata)
-
-output = encodetohtml(jsondata)
-myfile = open("./output.html", 'wb')
-myfile.write(output)
-myfile.close()
-
-

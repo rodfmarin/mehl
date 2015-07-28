@@ -46,13 +46,4 @@ def sendmessage(smtpserver, sender, recipient, data):
     # and message to send - here it is sent as one string.
     s.sendmail(sender, recipient, msg.as_string())
     s.quit()
-
-    emailfile = open("./email.txt",'w+')
-    emailfile.write(html)
-
-
-data = open("./output.html", "r")
-htmldata = data.read()
-
-sendmessage('localhost','mehltest@rodmarin.com','rodrigofmarin@gmail.com',htmldata)
-
+    
