@@ -1,7 +1,7 @@
 # mehl
 
 
-<img src="icon.svg" width="400" height="400" alt="mehl" title="mehl">
+<img src="icon.svg" width="200" height="200" alt="mehl" title="mehl">
 
 ## A utility that:
 
