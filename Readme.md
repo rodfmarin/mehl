@@ -1,9 +1,11 @@
-mehl
-==============
+# mehl
 
-python scripts that check against the meh.com api for the daily deal
---------------
 
-Not much to see here yet.  Early development of modules tested as working.
-Can initiate a connection with the API, extract the json data and convert
-an HTML template with releveant deal data.  Deal data is inserted into an smtp message and can be sent to a recipient.
+<img src="icon.svg" width="400" height="400" alt="mehl" title="mehl">
+
+## A utility that:
+
+- Checks the daily deal from [meh.com](https://meh.com) via their [API](https://api.meh.com).
+- Converts the deal data into an HTML page with relevant details.
+- Emails the html data to a recipient of your choosing via an SMTP server of your choosing.
+
