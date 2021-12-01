@@ -3,17 +3,19 @@ import time
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-"""mehl smtp routines"""
-__author__      = "Rodrigo Marin"
-__copyright__   = "Copyright 2015, Rodrigo Marin"
-__credits__     = ["Rodrigo Marin"]
-__license__     = "GPL"
-__version__     = "0.1"
-__maintainer__  = "Rodrigo Marin"
-__email__       = "rodrigo.f.marin@gmail.com"
-__status__      = "Development"
 
-def sendmessage(smtpserver, sender, recipient, data):
+"""mehl smtp routines"""
+__author__ = "Rodrigo Marin"
+__copyright__ = "Copyright 2015, Rodrigo Marin"
+__credits__ = ["Rodrigo Marin"]
+__license__ = "GPL"
+__version__ = "0.1"
+__maintainer__ = "Rodrigo Marin"
+__email__ = "rodrigo.f.marin@gmail.com"
+__status__ = "Development"
+
+
+def send_message(smtp_server, sender, recipient, data, username=None, password=None):
     """sends supplied data to the specified smtp server"""
     __sender = sender
     __recipient = recipient
@@ -27,7 +29,7 @@ def sendmessage(smtpserver, sender, recipient, data):
     # Create the body of the message (a plain-text and an HTML version).
     text = "meh.com daily deal for {0}".format(date)
 
-    #assign the data passed in to 'html'
+    # assign the data passed in to 'html'
     html = data
 
     # Record the MIME types of both parts - text/plain and text/html.
@@ -41,9 +43,12 @@ def sendmessage(smtpserver, sender, recipient, data):
     msg.attach(part2)
 
     # Send the message via local SMTP server.
-    s = smtplib.SMTP(smtpserver)
+    s = smtplib.SMTP(smtp_server)
+
+    if username is not None and password is not None:
+        s.login(username, password)
+
     # sendmail function takes 3 arguments: sender's address, recipient's address
     # and message to send - here it is sent as one string.
     s.sendmail(sender, recipient, msg.as_string())
     s.quit()
-    

@@ -15,17 +15,17 @@ __status__      = "Development"
 def connect(hostname, securely):
     """returns a connection object"""
     if securely:
-        httpsconnection = httplib.HTTPSConnection(hostname)
-        return httpsconnection
+        https_connection = httplib.HTTPSConnection(hostname)
+        return https_connection
     else:
-        httpconnection = httplib.HTTPConnection(hostname)
-        return httpconnection
+        http_connection = httplib.HTTPConnection(hostname)
+        return http_connection
 
 
 def getresponse(connection, uri):
     """returns the server response from a GET with the provided URI"""
-    if (isinstance(connection, httplib.HTTPSConnection) or isinstance(connection, httplib.HTTPConnection)):
-        request = connection.request("GET",uri)
+    if isinstance(connection, httplib.HTTPSConnection) or isinstance(connection, httplib.HTTPConnection):
+        request = connection.request("GET", uri)
         return connection.getresponse()
     else:
         raise TypeError('Must Provide an instance of HTTP or HTTPS Connection Type')
